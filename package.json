@@ -1,0 +1,29 @@
+{
+  "name": "babel-plugin-transform-dom",
+  "version": "0.1.0",
+  "description": "A babel transformer to provide an elegant interface for writing dom code in JS.",
+  "author": "Shaun Harrison (@shnhrrsn)",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shnhrrsn/babel-plugin-transform-dom.git"
+  },
+  "keywords": [
+    "babel-plugin"
+  ],
+  "devDependencies": {
+    "ava": "^0.20.0",
+    "babel-cli": ">=6.7 <=7.0",
+    "eslint": "^3.19.0",
+    "eslint-config-grind": "^2.0.0",
+    "recursive-readdir-sync": "^1.0.6"
+  },
+  "engines": {
+    "node": ">=6.0"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "test": "ava --verbose"
+  }
+}
