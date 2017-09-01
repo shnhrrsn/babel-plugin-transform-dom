@@ -6,7 +6,10 @@ const path = require('path')
 const fs = require('fs')
 
 const options = {
-	plugins: [ plugin ]
+	plugins: [
+		[ 'babel-plugin-transform-react-jsx', { pragma: 'dom.jsx' } ],
+		plugin
+	]
 }
 
 const fixtures = `${__dirname}/fixtures`

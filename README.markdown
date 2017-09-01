@@ -88,6 +88,39 @@ _body.appendChild((_aside = document.createElement('aside'), _aside.setAttribute
 const body = _body;
 ```
 
+## JSX
+
+You can also use `babel-plugin-transform-dom` to compile JSX!  To enable control over JSX, just use `dom.jsx` as the JSX pragma and make sure to add `babel-plugin-transform-dom` _after_ jsx in your plugins list:
+
+*.babelrc*
+```json
+{
+  "plugins": [
+    [ "transform-react-jsx", { "pragma": "dom.jsx" } ],
+    "transform-dom"
+  ]
+}
+```
+
+### Example
+
+#### In
+
+```jsx
+var profile = <div>
+  <img src="avatar.png" class="profile" />
+  <h3>{[user.firstName, user.lastName].join(' ')}</h3>
+</div>;
+```
+
+#### Out
+
+```js
+var _img, _h, _div;
+
+var profile = (_div = document.createElement("div"), _div.appendChild((_img = document.createElement("img"), _img.setAttribute("src", "avatar.png"), _img.setAttribute("class", "profile"), _img)), _div.appendChild((_h = document.createElement("h3"), _h.appendChild(document.createTextNode([user.firstName, user.lastName].join(' '))), _h)), _div);
+```
+
 ## License
 
 `babel-plugin-transform-dom` was created by [Shaun Harrison](https://github.com/shnhrrsn) and is made available under the [MIT license](LICENSE).
