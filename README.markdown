@@ -27,6 +27,10 @@ The order of the arguments you pass to `dom.tag` doesn’t matter.  Here’s a l
 
 You can also nest `dom.tag` calls to create complex trees.
 
+### Alternative Invocation
+
+Rather than calling `dom.div`, you can also call `dom('div')`.  When you invoke with the tag as an argument, everything above is true except the first argument _must_ always be the tag name.  After the first argument the order of arguments do not matter.
+
 ## Example
 
 Here’s an example of creating a simple span element with a class and some text:
