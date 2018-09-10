@@ -1,4 +1,9 @@
+function Avatar({ src }) {
+	return <img src={src} className="profile" />
+}
+
 var profile = <div>
-	<img src="avatar.png" className="profile" />
+	<Avatar src="avatar.png" />
 	<h3>{[user.firstName, user.lastName].join(' ')}</h3>
+	<p>Profile</p>
 </div>;
