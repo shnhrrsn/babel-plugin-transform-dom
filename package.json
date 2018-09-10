@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-dom",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "A babel transformer to provide an elegant interface for writing dom code in JS.",
   "author": "Shaun Harrison (@shnhrrsn)",
   "license": "MIT",
