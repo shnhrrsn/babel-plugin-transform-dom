@@ -19,8 +19,8 @@
     "@babel/core": "^7.3.3",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "ava": "^1.2.1",
-    "eslint": "^3.19.0",
-    "eslint-config-grind": "^2.0.0",
+    "eslint": "^5.14.1",
+    "eslint-config-grind": "^2.2.0",
     "jsdom": "^13.2.0",
     "recursive-readdir-sync": "^1.0.6"
   },
@@ -28,7 +28,7 @@
     "node": ">=6.0"
   },
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint lib",
     "test": "ava --verbose"
   }
 }
