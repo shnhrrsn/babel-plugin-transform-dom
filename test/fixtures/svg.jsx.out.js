@@ -1,4 +1,22 @@
-var _path, _path2, _path3, _path4, _path5, _path6, _path7, _path8, _path9, _g;
+var _path;
+
+var _path2;
+
+var _path3;
+
+var _path4;
+
+var _path5;
+
+var _path6;
+
+var _path7;
+
+var _path8;
+
+var _path9;
+
+var _g;
 
 var _svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 

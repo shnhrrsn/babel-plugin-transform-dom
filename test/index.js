@@ -1,6 +1,6 @@
 const test = require('ava')
 const plugin = require('../lib/index')
-const { transform } = require('babel-core')
+const { transform } = require('@babel/core')
 const readdir = require('recursive-readdir-sync')
 const path = require('path')
 const fs = require('fs')
@@ -9,7 +9,7 @@ const { JSDOM } = require("jsdom")
 const { window } = new JSDOM(``, { runScripts: 'outside-only' })
 const options = {
 	plugins: [
-		[ 'babel-plugin-transform-react-jsx', { pragma: 'dom.jsx' } ],
+		[ '@babel/transform-react-jsx', { pragma: 'dom.jsx' } ],
 		plugin
 	]
 }
