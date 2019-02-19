@@ -4,7 +4,9 @@ const { transform } = require('babel-core')
 const readdir = require('recursive-readdir-sync')
 const path = require('path')
 const fs = require('fs')
+const { JSDOM } = require("jsdom")
 
+const { window } = new JSDOM(``, { runScripts: 'outside-only' })
 const options = {
 	plugins: [
 		[ 'babel-plugin-transform-react-jsx', { pragma: 'dom.jsx' } ],
@@ -39,6 +41,7 @@ for(const file of files) {
 	}
 
 	const inFile = `${file.substring(0, file.length - 7)}.in.js`
+	const htmlFile = `${file.substring(0, file.length - 7)}.html`
 
 	if(!candidates.has(inFile)) {
 		continue
@@ -46,18 +49,37 @@ for(const file of files) {
 
 	tests.add({
 		in: inFile,
-		out: file
+		out: file,
+		html: htmlFile
 	})
 }
 
-for(const { in: inFile, out: outFile } of Array.from(tests).sort()) {
+for(const { in: inFile, out: outFile, html: htmlFile } of Array.from(tests).sort()) {
 	let name = path.relative(fixtures, inFile)
 	name = name.substring(0, name.length - 6)
 
 	test(name, t => {
+		const transformed = transform(fs.readFileSync(inFile), options).code
+
 		t.is(
-			transform(fs.readFileSync(inFile), options).code.trim(),
-			fs.readFileSync(outFile).toString().trim()
+			fs.readFileSync(outFile).toString().trim(),
+			transformed.trim()
+		)
+
+		if(!fs.existsSync(htmlFile)) {
+			return
+		}
+
+		const element = window.eval(transformed)
+		if(!element || !element.nodeType) {
+			t.fail('Missing rendered HTML value')
+		}
+
+		const value = element.nodeType === 3 ? element.textContent : element.outerHTML
+
+		t.is(
+			fs.readFileSync(htmlFile).toString().trim().replace(/[\n\t]/g, ''),
+			value.trim()
 		)
 	})
 }

@@ -1,3 +1,5 @@
+const user = { firstName: 'Shaun', lastName: 'Harrison' }
+
 function Avatar({ src }) {
 	return <img src={src} className="profile" />
 }
@@ -7,3 +9,5 @@ var profile = <div>
 	<h3>{[user.firstName, user.lastName].join(' ')}</h3>
 	<p>Profile</p>
 </div>;
+
+profile
